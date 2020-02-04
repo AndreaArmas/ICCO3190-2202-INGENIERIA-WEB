@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNominaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNominaLabel_idNomina}"/>
+                    <h:outputText value="#{nominaController.selected.idNomina}" title="#{bundle.ViewNominaTitle_idNomina}"/>
+                    <h:outputText value="#{bundle.ViewNominaLabel_valorHoraTrabajo}"/>
+                    <h:outputText value="#{nominaController.selected.valorHoraTrabajo}" title="#{bundle.ViewNominaTitle_valorHoraTrabajo}"/>
+                    <h:outputText value="Horas trabajadas"/>
+                    <h:outputText value="#{nominaController.selected.horas_trabajadas}" title="Horas trabajadas"/>
+                    <h:outputText value="#{bundle.ViewNominaLabel_valorMulta}"/>
+                    <h:outputText value="#{nominaController.selected.valorMulta}" title="#{bundle.ViewNominaTitle_valorMulta}"/>
+                    <h:outputText value="#{bundle.ViewNominaLabel_sueldoTotal}"/>
+                    <h:outputText value="#{nominaController.selected.sueldoTotal}" title="#{bundle.ViewNominaTitle_sueldoTotal}"/>
+                    <h:outputText value="#{bundle.ViewNominaLabel_idPersona}"/>
+                    <h:outputText value="#{nominaController.selected.idPersona}" title="#{bundle.ViewNominaTitle_idPersona}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{nominaController.destroyAndView}" value="#{bundle.ViewNominaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNominaEditLink}"/>
+                <br />
+                <h:commandLink action="#{nominaController.prepareCreate}" value="#{bundle.ViewNominaCreateLink}" />
+                <br />
+                <h:commandLink action="#{nominaController.prepareList}" value="#{bundle.ViewNominaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNominaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

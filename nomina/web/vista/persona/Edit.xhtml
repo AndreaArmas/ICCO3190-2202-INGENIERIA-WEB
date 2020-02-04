@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_idPersona}" for="idPersona" />
+                    <h:inputText id="idPersona" value="#{personaController.selected.idPersona}" title="#{bundle.EditPersonaTitle_idPersona}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_idPersona}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{personaController.selected.nombre}" title="#{bundle.EditPersonaTitle_nombre}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_apellidoPaterno}" for="apellidoPaterno" />
+                    <h:inputText id="apellidoPaterno" value="#{personaController.selected.apellidoPaterno}" title="#{bundle.EditPersonaTitle_apellidoPaterno}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_apellidoPaterno}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_apellidoMaterno}" for="apellidoMaterno" />
+                    <h:inputText id="apellidoMaterno" value="#{personaController.selected.apellidoMaterno}" title="#{bundle.EditPersonaTitle_apellidoMaterno}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{personaController.selected.email}" title="#{bundle.EditPersonaTitle_email}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{personaController.selected.telefono}" title="#{bundle.EditPersonaTitle_telefono}" />
+                </h:panelGrid>
+                <h:commandLink action="#{personaController.update}" value="#{bundle.EditPersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{bundle.EditPersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
